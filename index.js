@@ -1,5 +1,5 @@
   require('dotenv').config()
-  const dialogflow = require('dialogflow');
+  const dialogflow = require('@google-cloud/dialogflow');
   const path = require('path');
   const argv = process.argv.slice(2);
 
@@ -12,7 +12,7 @@
   const LANGUAGE_CODE = 'es-ES';
   const PROJECT_FILEPATH = path.dirname(__filename) + '/private/' + PROJECT_FILENAME;
   const SessionsClient = new dialogflow.SessionsClient({projectId: PROJECT_ID, keyFilename: PROJECT_FILEPATH});
-  const SessionPath = SessionsClient.sessionPath(PROJECT_ID, PROJECT_SESSION_ID);
+  const SessionPath = SessionsClient.projectAgentSessionPath(PROJECT_ID, PROJECT_SESSION_ID);
 
   //QUERY
   if(typeof argv[0] === 'undefined')var query = '';
